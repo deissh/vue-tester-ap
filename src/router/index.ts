@@ -10,10 +10,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/auth',
     redirect: '/auth/sign_in', // default path
-    component: import('../views/auth/BaseView.vue'),
+    component: () => import('../views/auth/BaseView.vue'),
     children: [{
       path: 'sign_in',
-      component: import('../views/auth/SignIn.vue'),
+      component: () => import('../views/auth/SignIn.vue'),
     }],
   },
 ];
