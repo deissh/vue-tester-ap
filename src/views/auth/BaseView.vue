@@ -24,7 +24,8 @@ export default class BaseView extends Vue {}
     background-color: #f9fafb;
 
     @include e-mobile {
-      margin: 15px;
+      margin-left: 15px;
+      margin-right: 15px;
     }
   }
 </style>

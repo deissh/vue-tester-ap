@@ -98,8 +98,7 @@ export default class SignIn extends Vue {
   flex-direction: column;
 
   width: 100%;
-  max-width: 30rem;
-  padding: 30px;
+  max-width: 350px;
 
   &__title {
     font-size: 1.875rem;
