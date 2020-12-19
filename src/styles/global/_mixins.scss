@@ -1,0 +1,160 @@
+@mixin e-media-below($width) {
+  @media (max-width: #{e-media-breakpoint($width)}) {
+    @content;
+  }
+}
+
+@mixin e-media-above($width) {
+  @media (min-width: #{e-media-breakpoint($width) + 1px}) {
+    @content;
+  }
+}
+
+@mixin e-media-range($from, $to) {
+  @media (min-width: #{e-media-breakpoint($from) + 1px}) and (max-width: #{e-media-breakpoint($to)}) {
+    @content;
+  }
+}
+
+@mixin e-minimal-desktop {
+  @media (min-width: #{e-media-breakpoint(lg) + 1px}) and (max-width: #{e-media-breakpoint(xl)}) {
+    @content;
+  }
+}
+
+@mixin e-minimal-desktop-and-below {
+  @media (max-width: #{e-media-breakpoint(xl)}) {
+    @content;
+  }
+}
+
+@mixin e-desktop {
+  @media (min-width: #{e-media-breakpoint(lg) + 1px}) {
+    @content;
+  }
+}
+
+@mixin e-desktop-xl {
+  @media (min-width: #{e-media-breakpoint(xl) + 1px}) {
+    @content;
+  }
+}
+
+@mixin e-desktop-xxl {
+  @media (min-width: #{e-media-breakpoint(xxl) + 1px}) {
+    @content;
+  }
+}
+
+@mixin e-desktop-and-tablet {
+  @media (min-width: #{e-media-breakpoint(md) + 1px}) {
+    @content;
+  }
+}
+
+@mixin e-tablet {
+  @media (min-width: #{e-media-breakpoint(md) + 1px}) and (max-width: #{e-media-breakpoint(lg)}) {
+    @content;
+  }
+}
+
+@mixin e-tablet-and-mobile {
+  @media (max-width: #{e-media-breakpoint(lg)}) {
+    @content;
+  }
+}
+
+@mixin e-mobile {
+  @media (max-width: #{e-media-breakpoint(md)}) {
+    @content;
+  }
+}
+
+@mixin e-mobile-sm {
+  @media (max-width: #{e-media-breakpoint(sm)}) {
+    @content;
+  }
+}
+
+@mixin e-responsive-below($width) {
+  @media (max-width: #{$width}) {
+    @content;
+  }
+}
+
+@mixin e-responsive-above($width) {
+  @media (min-width: #{$width}) {
+    @content;
+  }
+}
+
+@mixin e-responsive-range($from, $to) {
+  @media (min-width: #{$from}) and (max-width: #{$to}) {
+    @content;
+  }
+}
+
+@mixin e-hide-scrollbar {
+  -ms-overflow-style: none;
+  // фитча работает только Ff 64+
+  //noinspection CssUnknownProperty
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin e-text-ellipse {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width:  6px;
+    height: 60px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: e-map-get($e-state-colors, light, base);
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  & {
+    scrollbar-face-color: e-map-get($e-state-colors, light, base);
+    scrollbar-track-color: e-map-get($e-state-colors, light, base);
+  }
+}
+
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+  $src: null;
+
+  $extmods: (
+          eot: "?",
+          svg: "#" + e-str-replace($name, " ", "_")
+  );
+
+  $formats: (
+          otf: "opentype",
+          ttf: "truetype"
+  );
+
+  @each $ext in $exts {
+    $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+    $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+  }
+
+  @font-face {
+    font-family: quote($name);
+    font-style: $style;
+    font-weight: $weight;
+    src: $src;
+  }
+}

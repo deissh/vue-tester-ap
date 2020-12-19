@@ -1,15 +1,14 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import Home from '../views/Home.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home,
+    path: '/dashboard',
+    component: () => import('../views/dashboard/BaseView.vue'),
+    children: [],
   },
   {
     path: '/auth',
-    redirect: '/auth/sign_in', // default path
+    redirect: '/auth/sign_in',
     component: () => import('../views/auth/BaseView.vue'),
     children: [{
       path: 'sign_in',

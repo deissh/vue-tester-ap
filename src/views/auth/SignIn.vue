@@ -1,19 +1,17 @@
 <template>
-  <div class="max-w-md w-full space-y-8">
-    <div>
-      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-        Авторизация
-      </h2>
-    </div>
+  <div class="sign_in">
+    <h2 class="sign_in__title">
+      Авторизация
+    </h2>
 
-    <form class="mt-8 space-y-6" v-on:submit="onSubmit">
-      <div class="rounded-md shadow-sm -space-y-px">
+    <form class="sign_in__form" v-on:submit="onSubmit">
+      <div class="">
         <div>
           <label for="email-address" class="sr-only">Email address</label>
           <input
             v-model="email"
             id="email-address"
-            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            class=""
             placeholder="Email"
             autocomplete="email"
             required
@@ -25,7 +23,7 @@
             v-model="password"
             id="password"
             autocomplete="current-password"
-            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            class=""
             placeholder="Пароль"
             required
             type="password">
@@ -37,10 +35,10 @@
           <input
               v-model="rememberMe"
               id="remember_me"
-              class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+              class=""
               type="checkbox">
 
-          <label for="remember_me" class="ml-2 block text-sm text-gray-900">
+          <label for="remember_me" class="">
             Запомнить меня
           </label>
         </div>
@@ -48,7 +46,7 @@
 
       <button
         v-on:click="onSubmit"
-        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        class="btn btn-round"
       >
         Войти
       </button>
@@ -66,9 +64,6 @@ export default class SignIn extends Vue {
 
   public password = '';
 
-  /**
-   * Вызыватеся при попытке авторизоваться
-   */
   public onSubmit(e: Event) {
     console.log('send req \\w', this.email, this.password, this.rememberMe);
     e.preventDefault();
@@ -77,5 +72,47 @@ export default class SignIn extends Vue {
 </script>
 
 <style scoped lang="scss">
+@import "../../styles/init";
 
+.btn {
+  width: 100%;
+  color: #fff;
+
+  border: transparent;
+
+  cursor: pointer;
+  background-color: e-map-get($e-state-colors, brand, base);
+
+  padding: 0.5rem 1rem;
+
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+
+  &-round {
+    border-radius: 5px;
+  }
+}
+
+.sign_in {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 30rem;
+  padding: 30px;
+
+  &__title {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 800;
+
+    margin: 30px 0 0;
+  }
+
+  &__form {
+    & > * {
+      margin-top: 30px;
+    }
+  }
+}
 </style>

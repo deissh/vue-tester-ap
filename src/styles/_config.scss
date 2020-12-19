@@ -1,0 +1,47 @@
+$e-media-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1399px
+) !default;
+
+$e-state-colors: (
+  brand: (
+          base: #4f46e5,
+          inverse: #ffffff
+  ),
+  light: (
+          base: #E0E0E0,
+          inverse: #282a3c
+  ),
+  dark: (
+          base: #282a3c,
+          inverse: #f5f5f5
+  ),
+
+  primary: (
+          base: #be1328,
+          inverse: #ffffff
+  ),
+  secondary: (
+          base: #34C759,
+          inverse: #ffffff
+  ),
+  success: (
+          base: #62c965,
+          inverse: #ffffff
+  ),
+  info: (
+          base: #5578eb,
+          inverse: #ffffff
+  ),
+  warning: (
+          base: #ffb822,
+          inverse: #111111
+  ),
+  danger: (
+          base: #fd3b1d,
+          inverse: #ffffff
+  )
+) !default;
