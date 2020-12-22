@@ -5,33 +5,26 @@
     </h2>
 
     <form class="sign_in__form" v-on:submit="onSubmit">
-      <div class="">
-        <div>
-          <label for="email-address" class="sr-only">Email address</label>
-          <input
-            v-model="email"
-            id="email-address"
-            class=""
-            placeholder="Email"
-            autocomplete="email"
-            required
-            type="email">
-        </div>
-        <div>
-          <label for="password" class="sr-only">Password</label>
-          <input
-            v-model="password"
-            id="password"
-            autocomplete="current-password"
-            class=""
-            placeholder="Пароль"
-            required
-            type="password">
-        </div>
+      <div class="cred">
+        <input
+          v-model="email"
+          class="input"
+          placeholder="Email"
+          autocomplete="email"
+          required
+          type="email">
+
+        <input
+          v-model="password"
+          autocomplete="current-password"
+          class="input input-password"
+          placeholder="Пароль"
+          required
+          type="password">
       </div>
 
-      <div class="flex items-center justify-between">
-        <div class="flex items-center">
+      <div class="option">
+        <div class="option__remember">
           <input
               v-model="rememberMe"
               id="remember_me"
@@ -42,6 +35,13 @@
             Запомнить меня
           </label>
         </div>
+
+        <router-link
+          class="option__restore"
+          to="/auth/restore"
+        >
+          Забыли пароль?
+        </router-link>
       </div>
 
       <button
@@ -74,6 +74,27 @@ export default class SignIn extends Vue {
 <style scoped lang="scss">
 @import "../../styles/init";
 
+.input {
+  width: auto;
+
+  border-width: 1px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: rgb(209, 213, 219);
+
+  padding: 0.5rem 0.75rem;
+
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+
+  &:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+
+    border-color: e-map-get($e-state-colors, brand, base);
+  }
+}
+
 .btn {
   width: 100%;
   color: #fff;
@@ -101,6 +122,8 @@ export default class SignIn extends Vue {
   max-width: 350px;
 
   &__title {
+    text-align: center;
+
     font-size: 1.875rem;
     line-height: 2.25rem;
     font-weight: 800;
@@ -111,6 +134,39 @@ export default class SignIn extends Vue {
   &__form {
     & > * {
       margin-top: 30px;
+    }
+  }
+}
+
+.option {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &__remember {
+    flex: 1 1 auto;
+  }
+
+  &__restore {
+    color: e-map-get($e-state-colors, brand, base);
+    text-decoration: unset;
+  }
+}
+
+.cred {
+  display: flex;
+  flex-direction: column;
+
+  .input {
+    &:first-child {
+      border-bottom-color: transparent;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:last-child {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
     }
   }
 }

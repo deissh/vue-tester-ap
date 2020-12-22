@@ -21,11 +21,11 @@ export default class BaseView extends Vue {}
 
     height: 100vh;
 
-    background-color: #f9fafb;
+    background-color: e-map-get($e-state-colors, dark, inverse);
 
     @include e-mobile {
-      margin-left: 15px;
-      margin-right: 15px;
+      padding-right: 15px;
+      padding-left: 15px;
     }
   }
 </style>
