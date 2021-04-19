@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts">
-import { Vue } from 'vue-class-component';
+import { defineComponent } from 'vue';
 
-export default class BaseView extends Vue {}
+export default defineComponent({});
 </script>
 
 <style lang="scss" scoped>
@@ -21,9 +21,9 @@ export default class BaseView extends Vue {}
 
     height: 100vh;
 
-    background-color: e-map-get($e-state-colors, dark, inverse);
+    background-color: tf-map-get($tf-state-colors, light, base);
 
-    @include e-mobile {
+    @include tf-mobile {
       padding-right: 15px;
       padding-left: 15px;
     }

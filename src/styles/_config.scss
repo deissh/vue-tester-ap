@@ -1,4 +1,4 @@
-$e-media-breakpoints: (
+$tf-media-breakpoints: (
   xs: 0,
   sm: 576px,
   md: 768px,
@@ -6,42 +6,43 @@ $e-media-breakpoints: (
   xl: 1399px
 ) !default;
 
-$e-state-colors: (
+$tf-state-colors: (
   brand: (
-          base: #4f46e5,
-          inverse: #ffffff
+    base: #2D2D2D,
+    inverse: #ffffff
   ),
   light: (
-          base: #E0E0E0,
-          inverse: #282a3c
+    base: #F2F2F2,
+    inverse: #ffffff
   ),
-  dark: (
-          base: #282a3c,
-          inverse: #f5f5f5
+  content-bg: (
+    base: #fff,
+    inverse: #fff
   ),
 
+  // overwrite bootstrap colors
   primary: (
-          base: #be1328,
-          inverse: #ffffff
+    base: #2D2D2D,
+    inverse: #ffffff
   ),
   secondary: (
-          base: #34C759,
-          inverse: #ffffff
+    base: #34C759,
+    inverse: #ffffff
   ),
   success: (
-          base: #62c965,
-          inverse: #ffffff
+    base: #62c965,
+    inverse: #ffffff
   ),
   info: (
-          base: #5578eb,
-          inverse: #ffffff
+    base: #6BFFAF,
+    inverse: #ffffff
   ),
   warning: (
-          base: #ffb822,
-          inverse: #111111
+    base: #FFDF6B,
+    inverse: #111111
   ),
   danger: (
-          base: #fd3b1d,
-          inverse: #ffffff
+    base: #FF5454,
+    inverse: #ffffff
   )
 ) !default;

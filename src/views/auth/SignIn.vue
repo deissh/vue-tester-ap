@@ -1,173 +1,79 @@
 <template>
-  <div class="sign_in">
-    <h2 class="sign_in__title">
-      Авторизация
-    </h2>
-
-    <form class="sign_in__form" v-on:submit="onSubmit">
-      <div class="cred">
-        <input
-          v-model="email"
-          class="input"
-          placeholder="Email"
-          autocomplete="email"
-          required
-          type="email">
-
-        <input
-          v-model="password"
-          autocomplete="current-password"
-          class="input input-password"
-          placeholder="Пароль"
-          required
-          type="password">
+  <form v-on:submit="login">
+    <TFCard class="card_content">
+      <div class="logo">
+        <img src="../../assets/rgatu-new-logo.png" width="120"/>
       </div>
 
-      <div class="option">
-        <div class="option__remember">
-          <input
-              v-model="rememberMe"
-              id="remember_me"
-              class=""
-              type="checkbox">
+      <TFInput
+        placeholder="Username"
+        :value="username" />
+      <TFInput
+        placeholder="Password"
+        :value="password" />
 
-          <label for="remember_me" class="">
-            Запомнить меня
-          </label>
-        </div>
+<!-- TODO: remember me checkbox-->
 
-        <router-link
-          class="option__restore"
-          to="/auth/restore"
-        >
-          Забыли пароль?
-        </router-link>
-      </div>
-
-      <button
-        v-on:click="onSubmit"
-        class="btn btn-round"
-      >
-        Войти
-      </button>
-    </form>
-  </div>
+      <TFButton>Войти</TFButton>
+    </TFCard>
+  </form>
 </template>
 
 <script lang="ts">
-import { Vue } from 'vue-class-component';
+import { defineComponent } from 'vue';
+import TFInput from '@/components/tf/TFInput.vue';
+import TFCard from '@/components/tf/TFCard.vue';
+import TFButton from '@/components/tf/TFButton.vue';
 
-export default class SignIn extends Vue {
-  public rememberMe = false;
+const LAST_LOGIN_USERNAME = 'LAST_LOGIN_USERNAME';
 
-  public email = '';
+export default defineComponent({
+  components: {
+    TFCard, TFButton, TFInput,
+  },
 
-  public password = '';
+  data() {
+    return {
+      username: localStorage.getItem(LAST_LOGIN_USERNAME) || '',
+      password: '',
+    };
+  },
 
-  public onSubmit(e: Event) {
-    console.log('send req \\w', this.email, this.password, this.rememberMe);
-    e.preventDefault();
-  }
-}
+  methods: {
+    login(e: Event) {
+      console.log('login w/', this.username, this.password);
+
+      this.$router.push('/dashboard');
+
+      e.preventDefault();
+    },
+  },
+});
 </script>
 
 <style scoped lang="scss">
 @import "../../styles/init";
 
-.input {
-  width: auto;
-
-  border-width: 1px;
-  border-radius: 10px;
-  border-style: solid;
-  border-color: rgb(209, 213, 219);
-
-  padding: 0.5rem 0.75rem;
-
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-
-  &:focus {
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-
-    border-color: e-map-get($e-state-colors, brand, base);
-  }
-}
-
-.btn {
-  width: 100%;
-  color: #fff;
-
-  border: transparent;
-
-  cursor: pointer;
-  background-color: e-map-get($e-state-colors, brand, base);
-
-  padding: 0.5rem 1rem;
-
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-
-  &-round {
-    border-radius: 5px;
-  }
-}
-
-.sign_in {
+.card_content {
   display: flex;
   flex-direction: column;
 
-  width: 100%;
-  max-width: 350px;
+  width: 250px;
 
-  &__title {
-    text-align: center;
-
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-    font-weight: 800;
-
-    margin: 30px 0 0;
-  }
-
-  &__form {
-    & > * {
-      margin-top: 30px;
-    }
-  }
-}
-
-.option {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  &__remember {
-    flex: 1 1 auto;
-  }
-
-  &__restore {
-    color: e-map-get($e-state-colors, brand, base);
-    text-decoration: unset;
-  }
-}
-
-.cred {
-  display: flex;
-  flex-direction: column;
-
-  .input {
-    &:first-child {
-      border-bottom-color: transparent;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
+  & > * {
+    margin-bottom: 20px;
 
     &:last-child {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
+      margin-bottom: 0;
     }
   }
 }
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 auto;
+  justify-content: center;
+}
+
 </style>

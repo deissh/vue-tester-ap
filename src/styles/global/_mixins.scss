@@ -1,100 +1,100 @@
-@mixin e-media-below($width) {
-  @media (max-width: #{e-media-breakpoint($width)}) {
+@mixin tf-media-below($width) {
+  @media (max-width: #{$tf-media-breakpoints($width)}) {
     @content;
   }
 }
 
-@mixin e-media-above($width) {
-  @media (min-width: #{e-media-breakpoint($width) + 1px}) {
+@mixin tf-media-above($width) {
+  @media (min-width: #{$tf-media-breakpoints($width) + 1px}) {
     @content;
   }
 }
 
-@mixin e-media-range($from, $to) {
-  @media (min-width: #{e-media-breakpoint($from) + 1px}) and (max-width: #{e-media-breakpoint($to)}) {
+@mixin tf-media-range($from, $to) {
+  @media (min-width: #{$tf-media-breakpoints($from) + 1px}) and (max-width: #{$tf-media-breakpoints($to)}) {
     @content;
   }
 }
 
-@mixin e-minimal-desktop {
-  @media (min-width: #{e-media-breakpoint(lg) + 1px}) and (max-width: #{e-media-breakpoint(xl)}) {
+@mixin tf-minimal-desktop {
+  @media (min-width: #{$tf-media-breakpoints(lg) + 1px}) and (max-width: #{$tf-media-breakpoints(xl)}) {
     @content;
   }
 }
 
-@mixin e-minimal-desktop-and-below {
-  @media (max-width: #{e-media-breakpoint(xl)}) {
+@mixin tf-minimal-desktop-and-below {
+  @media (max-width: #{$tf-media-breakpoints(xl)}) {
     @content;
   }
 }
 
-@mixin e-desktop {
-  @media (min-width: #{e-media-breakpoint(lg) + 1px}) {
+@mixin tf-desktop {
+  @media (min-width: #{$tf-media-breakpoints(lg) + 1px}) {
     @content;
   }
 }
 
-@mixin e-desktop-xl {
-  @media (min-width: #{e-media-breakpoint(xl) + 1px}) {
+@mixin tf-desktop-xl {
+  @media (min-width: #{$tf-media-breakpoints(xl) + 1px}) {
     @content;
   }
 }
 
-@mixin e-desktop-xxl {
-  @media (min-width: #{e-media-breakpoint(xxl) + 1px}) {
+@mixin tf-desktop-xxl {
+  @media (min-width: #{$tf-media-breakpoints(xxl) + 1px}) {
     @content;
   }
 }
 
-@mixin e-desktop-and-tablet {
-  @media (min-width: #{e-media-breakpoint(md) + 1px}) {
+@mixin tf-desktop-and-tablet {
+  @media (min-width: #{$tf-media-breakpoints(md) + 1px}) {
     @content;
   }
 }
 
-@mixin e-tablet {
-  @media (min-width: #{e-media-breakpoint(md) + 1px}) and (max-width: #{e-media-breakpoint(lg)}) {
+@mixin tf-tablet {
+  @media (min-width: #{$tf-media-breakpoints(md) + 1px}) and (max-width: #{$tf-media-breakpoints(lg)}) {
     @content;
   }
 }
 
-@mixin e-tablet-and-mobile {
-  @media (max-width: #{e-media-breakpoint(lg)}) {
+@mixin tf-tablet-and-mobile {
+  @media (max-width: #{$tf-media-breakpoints(lg)}) {
     @content;
   }
 }
 
-@mixin e-mobile {
-  @media (max-width: #{e-media-breakpoint(md)}) {
+@mixin tf-mobile {
+  @media (max-width: #{$tf-media-breakpoints(md)}) {
     @content;
   }
 }
 
-@mixin e-mobile-sm {
-  @media (max-width: #{e-media-breakpoint(sm)}) {
+@mixin tf-mobile-sm {
+  @media (max-width: #{$tf-media-breakpoints(sm)}) {
     @content;
   }
 }
 
-@mixin e-responsive-below($width) {
+@mixin tf-responsive-below($width) {
   @media (max-width: #{$width}) {
     @content;
   }
 }
 
-@mixin e-responsive-above($width) {
+@mixin tf-responsive-above($width) {
   @media (min-width: #{$width}) {
     @content;
   }
 }
 
-@mixin e-responsive-range($from, $to) {
+@mixin tf-responsive-range($from, $to) {
   @media (min-width: #{$from}) and (max-width: #{$to}) {
     @content;
   }
 }
 
-@mixin e-hide-scrollbar {
+@mixin tf-hide-scrollbar {
   -ms-overflow-style: none;
   // фитча работает только Ff 64+
   //noinspection CssUnknownProperty
@@ -104,7 +104,7 @@
   }
 }
 
-@mixin e-text-ellipse {
+@mixin tf-text-ellipse {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -118,7 +118,7 @@
 
   &::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    background: e-map-get($e-state-colors, light, base);
+    background: tf-map-get($tf-state-colors, light, base);
   }
 
   &::-webkit-scrollbar-track {
@@ -126,18 +126,17 @@
   }
 
   & {
-    scrollbar-face-color: e-map-get($e-state-colors, light, base);
-    scrollbar-track-color: e-map-get($e-state-colors, light, base);
+    scrollbar-face-color: tf-map-get($tf-state-colors, light, base);
+    scrollbar-track-color: tf-map-get($tf-state-colors, light, base);
   }
 }
-
 
 @mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
   $src: null;
 
   $extmods: (
           eot: "?",
-          svg: "#" + e-str-replace($name, " ", "_")
+          svg: "#" + tf-str-replace($name, " ", "_")
   );
 
   $formats: (

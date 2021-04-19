@@ -1,4 +1,4 @@
-@function e-map-get($map, $keys...) {
+@function tf-map-get($map, $keys...) {
   @if length($keys) == 1 {
     $keys: nth($keys, 1);
   }
@@ -18,7 +18,7 @@
         }
       }
       @else {
-        @return e-get-warning($warn, $get, nth($keys, $i));
+        @return tf-get-warning($warn, $get, nth($keys, $i));
       }
     }
   }
@@ -26,7 +26,7 @@
   @return $get;
 }
 
-@function e-get-warning($warn, $get, $key) {
+@function tf-get-warning($warn, $get, $key) {
   @if $get == null {
     @warn "Map has no value for key search `#{$warn}`";
   }
@@ -36,20 +36,20 @@
   @return null;
 }
 
-@function e-map-has($map, $keys...) {
+@function tf-map-has($map, $keys...) {
   @if length($keys) == 1 {
     $keys: nth($keys, 1);
   }
 
   $warn: "#{nth($keys, 1)}";
   $length: length($keys);
-  $get: e-map-get($map, nth($keys, 1));
+  $get: tf-map-get($map, nth($keys, 1));
 
   @if $length > 1 {
     @for $i from 2 through $length {
       @if $get != null and type-of($get) == 'map' {
         $warn: $warn + "->#{nth($keys, $i)}";
-        $get: e-map-get($get, nth($keys, $i));
+        $get: tf-map-get($get, nth($keys, $i));
 
         @if $get == null {
           @return false;
@@ -69,20 +69,20 @@
   }
 }
 
-@function e-media-breakpoint($type) {
-  @if (e-map-has($e-media-breakpoints, $type)) {
-    @return e-map-get($e-media-breakpoints, $type);
+@function tf-media-breakpoint($type) {
+  @if (tf-map-has($tf-media-breakpointss, $type)) {
+    @return tf-map-get($tf-media-breakpointss, $type);
   } @else {
     @return $type;
   }
 }
 
 
-@function e-str-replace($string, $search, $replace: "") {
+@function tf-str-replace($string, $search, $replace: "") {
   $index: str-index($string, $search);
 
   @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace + e-str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    @return str-slice($string, 1, $index - 1) + $replace + tf-str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
   }
 
   @return $string;
