@@ -10,6 +10,7 @@
         v-model="cred.username" />
       <TFInput
         placeholder="Password"
+        type="password"
         v-model="cred.password" />
 
 <!-- TODO: remember me checkbox-->
@@ -53,6 +54,7 @@ export default defineComponent({
     onLoginSuccess() {
       console.log('login w/', this.cred);
       localStorage.setItem(LAST_LOGIN_USERNAME, this.cred.username);
+      localStorage.setItem('debug_is_auth', 'true');
 
       this.$router.push('/dashboard');
     },

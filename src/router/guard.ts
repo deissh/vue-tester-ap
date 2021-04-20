@@ -7,9 +7,9 @@ export const staffGuard: NavigationGuard = (to, from, next) => {
 
 export const authorizedGuard: NavigationGuard = (to, from, next) => {
   console.debug(to.name);
-  if (true) {
+  if (!localStorage.getItem('debug_is_auth')) {
     console.log('Redirect to login: no auth');
-    next({ name: '/auth/sign_in' });
+    next({ path: '/auth/sign_in' });
 
     return;
   }

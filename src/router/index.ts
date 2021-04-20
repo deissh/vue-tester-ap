@@ -3,7 +3,7 @@ import { authorizedGuard } from './guard';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/dashboard',
+    path: '/',
     component: () => import('../views/dashboard/BaseView.vue'),
     beforeEnter: [authorizedGuard],
     children: [],
@@ -16,6 +16,10 @@ const routes: Array<RouteRecordRaw> = [
       path: 'sign_in',
       component: () => import('../views/auth/SignIn.vue'),
     }],
+  },
+  {
+    path: '/:catchAll(.*)',
+    redirect: '/',
   },
 ];
 

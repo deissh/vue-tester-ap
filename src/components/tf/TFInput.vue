@@ -1,7 +1,7 @@
 <template>
   <input
     class="user_badge"
-    type="text"
+    :type="type"
     :value="modelValue"
     :placeholder="placeholder"
     @input="$emit('update:modelValue', $event.target.value)"
@@ -13,6 +13,7 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   props: {
+    type: { required: false, type: String, default: 'text' },
     modelValue: { required: false, type: String },
     placeholder: { required: false, type: String },
   },
