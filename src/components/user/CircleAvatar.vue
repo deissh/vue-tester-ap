@@ -14,7 +14,7 @@ export default defineComponent({
     user: { required: true, type: Object as PropType<UserDto> },
   },
   computed: {
-    avatarUrl() {
+    avatarUrl(): string {
       // TODO: getting image from user profile
       return `https://avatars.redforester.com/?name=${this.user.first_name} ${this.user.last_name}`;
     },

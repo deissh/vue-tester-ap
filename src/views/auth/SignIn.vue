@@ -11,7 +11,7 @@
       <TFInput
         placeholder="Password"
         type="password"
-        v-model="cred.password" />
+        v-model="cred.pwd" />
 
 <!-- TODO: remember me checkbox-->
 
@@ -22,6 +22,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { AuthUseCase } from '@/core/usecase/Auth';
+
 import TFInput from '@/components/tf/TFInput.vue';
 import TFCard from '@/components/tf/TFCard.vue';
 import TFButton from '@/components/tf/TFButton.vue';
@@ -37,15 +39,17 @@ export default defineComponent({
     return {
       cred: {
         username: localStorage.getItem(LAST_LOGIN_USERNAME) || '',
-        password: '',
+        pwd: '',
       },
+
+      authUseCase: new AuthUseCase(),
     };
   },
 
   methods: {
-    login(e: Event) {
+    async login(e: Event) {
       // some logic
-
+      await this.authUseCase.login(this.cred.username, this.cred.pwd);
       this.onLoginSuccess();
 
       e.preventDefault();
