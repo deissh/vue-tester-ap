@@ -34,6 +34,8 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+@import "src/styles/init";
+
 .nav_bar {
   flex: 1 1 auto;
 
@@ -58,6 +60,13 @@ export default defineComponent({
       flex-direction: column;
 
       width: 100%;
+      @include tf-mobile {
+        width: auto;
+      }
+    }
+
+    @include tf-mobile {
+      flex-direction: row;
     }
   }
 }

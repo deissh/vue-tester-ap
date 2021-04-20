@@ -1,17 +1,12 @@
 <template>
   <div class="user_badge">
-    <div class="start">
-      <CircleAvatar
-        class="avatar"
-        :user="user" />
+    <CircleAvatar
+      class="avatar"
+      :user="user" />
 
-      <div class="user_name">
-        <span>{{ user.first_name }} {{ user.last_name }}</span>
-        <span class="role">студент, ИПБ-20</span>
-      </div>
-    </div>
-    <div class="end">
-      ass
+    <div class="user_name">
+      <span>{{ user.first_name }} {{ user.last_name }}</span>
+      <span class="role">студент, ИПБ-20</span>
     </div>
   </div>
 </template>
@@ -35,14 +30,7 @@ export default defineComponent({
 
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-
-  .start, .end {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
 
   .avatar {
     margin-right: 10px;

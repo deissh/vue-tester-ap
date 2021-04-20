@@ -1,12 +1,11 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import { Role } from '@/core/dto/role';
-import { havePermissions } from '@/router/guard';
+import { authorizedGuard } from './guard';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/dashboard',
     component: () => import('../views/dashboard/BaseView.vue'),
-    beforeEnter: havePermissions(Role.nobody),
+    beforeEnter: [authorizedGuard],
     children: [],
   },
   {

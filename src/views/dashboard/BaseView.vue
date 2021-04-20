@@ -2,7 +2,9 @@
   <div class="container">
     <NavBar class="nav_bar" />
 
-    <router-view />
+    <div class="content">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -28,11 +30,31 @@ export default defineComponent({
 
     width: 250px;
     height: 100vh;
+
+    @include tf-mobile {
+      width: 100vw;
+      height: auto;
+    }
   }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+
+  padding: 20px 0;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 100%;
+  max-width: 600px;
 
   @include tf-mobile {
-    padding-right: 15px;
-    padding-left: 15px;
+    max-width: 100%;
+
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 </style>

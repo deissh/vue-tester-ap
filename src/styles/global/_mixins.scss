@@ -1,77 +1,77 @@
 @mixin tf-media-below($width) {
-  @media (max-width: #{$tf-media-breakpoints($width)}) {
+  @media (max-width: #{tf-map-get($tf-media-breakpoints, $width)}) {
     @content;
   }
 }
 
 @mixin tf-media-above($width) {
-  @media (min-width: #{$tf-media-breakpoints($width) + 1px}) {
+  @media (min-width: #{tf-map-get($tf-media-breakpoints, $width) + 1px}) {
     @content;
   }
 }
 
 @mixin tf-media-range($from, $to) {
-  @media (min-width: #{$tf-media-breakpoints($from) + 1px}) and (max-width: #{$tf-media-breakpoints($to)}) {
+  @media (min-width: #{tf-map-get($tf-media-breakpoints, $from) + 1px}) and (max-width: #{tf-map-get($tf-media-breakpoints, $to)}) {
     @content;
   }
 }
 
 @mixin tf-minimal-desktop {
-  @media (min-width: #{$tf-media-breakpoints(lg) + 1px}) and (max-width: #{$tf-media-breakpoints(xl)}) {
+  @media (min-width: #{tf-map-get($tf-media-breakpoints, lg) + 1px}) and (max-width: #{tf-map-get($tf-media-breakpoints, xl)}) {
     @content;
   }
 }
 
 @mixin tf-minimal-desktop-and-below {
-  @media (max-width: #{$tf-media-breakpoints(xl)}) {
+  @media (max-width: #{tf-map-get($tf-media-breakpoints, xl)}) {
     @content;
   }
 }
 
 @mixin tf-desktop {
-  @media (min-width: #{$tf-media-breakpoints(lg) + 1px}) {
+  @media (min-width: #{tf-map-get($tf-media-breakpoints, lg) + 1px}) {
     @content;
   }
 }
 
 @mixin tf-desktop-xl {
-  @media (min-width: #{$tf-media-breakpoints(xl) + 1px}) {
+  @media (min-width: #{tf-map-get($tf-media-breakpoints, xl) + 1px}) {
     @content;
   }
 }
 
 @mixin tf-desktop-xxl {
-  @media (min-width: #{$tf-media-breakpoints(xxl) + 1px}) {
+  @media (min-width: #{tf-map-get($tf-media-breakpoints, xxl) + 1px}) {
     @content;
   }
 }
 
 @mixin tf-desktop-and-tablet {
-  @media (min-width: #{$tf-media-breakpoints(md) + 1px}) {
+  @media (min-width: #{tf-map-get($tf-media-breakpoints, md) + 1px}) {
     @content;
   }
 }
 
 @mixin tf-tablet {
-  @media (min-width: #{$tf-media-breakpoints(md) + 1px}) and (max-width: #{$tf-media-breakpoints(lg)}) {
+  @media (min-width: #{tf-map-get($tf-media-breakpoints, md) + 1px}) and (max-width: #{tf-map-get($tf-media-breakpoints, lg)}) {
     @content;
   }
 }
 
 @mixin tf-tablet-and-mobile {
-  @media (max-width: #{$tf-media-breakpoints(lg)}) {
+  @media (max-width: #{tf-map-get($tf-media-breakpoints, lg)}) {
     @content;
   }
 }
 
 @mixin tf-mobile {
-  @media (max-width: #{$tf-media-breakpoints(md)}) {
+  @media (max-width: #{tf-map-get($tf-media-breakpoints, md)}) {
     @content;
   }
 }
 
 @mixin tf-mobile-sm {
-  @media (max-width: #{$tf-media-breakpoints(sm)}) {
+  @media (max-width: #{tf-map-get($tf-media-breakpoints, sm)}) {
     @content;
   }
 }
