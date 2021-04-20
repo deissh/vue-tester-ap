@@ -1,6 +1,6 @@
 <template>
   <input
-    class="root"
+    class="user_badge"
     type="text"
     :value="modelValue"
     :placeholder="placeholder"
@@ -22,7 +22,7 @@ export default defineComponent({
 <style scoped lang="scss">
 @import "../../styles/init";
 
-.root {
+.user_badge {
   height: 40px;
 
   padding-left: 20px;

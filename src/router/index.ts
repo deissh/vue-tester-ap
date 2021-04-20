@@ -6,8 +6,8 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/dashboard',
     component: () => import('../views/dashboard/BaseView.vue'),
-    children: [],
     beforeEnter: havePermissions(Role.nobody),
+    children: [],
   },
   {
     path: '/auth',

@@ -3,6 +3,6 @@ import { UserDto } from '@/core/dto/user';
 
 export class CurrentUserDto extends UserDto {
   static fromJSON(data: any): UserDto {
-    return plainToClass(this, data);
+    return plainToClass(CurrentUserDto, data);
   }
 }
