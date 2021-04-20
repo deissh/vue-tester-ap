@@ -44,11 +44,17 @@ export default defineComponent({
   border: unset;
   border-radius: 5px;
 
+  cursor: pointer;
+
   .content {
     align-items: center;
     text-align: center;
 
     color: tf-map-get($tf-state-colors, brand, inverse);
+  }
+
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
 }
 </style>

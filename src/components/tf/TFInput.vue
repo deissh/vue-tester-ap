@@ -2,8 +2,10 @@
   <input
     class="root"
     type="text"
-    :value="value"
-    :placeholder="placeholder" />
+    :value="modelValue"
+    :placeholder="placeholder"
+    @input="$emit('update:modelValue', $event.target.value)"
+  />
 </template>
 
 <script lang="ts">
@@ -11,7 +13,7 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   props: {
-    value: { required: true, type: String },
+    modelValue: { required: false, type: String },
     placeholder: { required: false, type: String },
   },
 });

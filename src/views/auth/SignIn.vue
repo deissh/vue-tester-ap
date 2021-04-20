@@ -2,15 +2,15 @@
   <form v-on:submit="login">
     <TFCard class="card_content">
       <div class="logo">
-        <img src="../../assets/rgatu-new-logo.png" width="120"/>
+        <img src="../../assets/rgatu-new-logo.png" />
       </div>
 
       <TFInput
         placeholder="Username"
-        :value="username" />
+        v-model="cred.username" />
       <TFInput
         placeholder="Password"
-        :value="password" />
+        v-model="cred.password" />
 
 <!-- TODO: remember me checkbox-->
 
@@ -34,18 +34,27 @@ export default defineComponent({
 
   data() {
     return {
-      username: localStorage.getItem(LAST_LOGIN_USERNAME) || '',
-      password: '',
+      cred: {
+        username: localStorage.getItem(LAST_LOGIN_USERNAME) || '',
+        password: '',
+      },
     };
   },
 
   methods: {
     login(e: Event) {
-      console.log('login w/', this.username, this.password);
+      // some logic
 
-      this.$router.push('/dashboard');
+      this.onLoginSuccess();
 
       e.preventDefault();
+    },
+
+    onLoginSuccess() {
+      console.log('login w/', this.cred);
+      localStorage.setItem(LAST_LOGIN_USERNAME, this.cred.username);
+
+      this.$router.push('/dashboard');
     },
   },
 });
@@ -74,6 +83,10 @@ export default defineComponent({
   flex-direction: row;
   flex: 1 1 auto;
   justify-content: center;
+
+  img {
+    width: 200px;
+  }
 }
 
 </style>
