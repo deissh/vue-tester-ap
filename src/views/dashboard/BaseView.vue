@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <NavBar class="nav_bar" />
+    <NavBar class="nav_bar" :current-user="currentUser" />
 
     <div class="content">
       <router-view />
@@ -10,10 +10,22 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+
 import NavBar from '@/components/nav-bar/NavBar.vue';
+import { AuthRepositories } from '@/core/repositories/auth.repositories';
+import { UserDto } from '@/core/dto/user.dto';
 
 export default defineComponent({
   components: { NavBar },
+  data: () => ({
+    authRepositories: new AuthRepositories(),
+  }),
+
+  computed: {
+    currentUser(): UserDto {
+      return this.authRepositories.currentUser;
+    },
+  },
 });
 </script>
 

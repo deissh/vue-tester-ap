@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import store from '@/store';
 import { CurrentUserDto } from '@/core/dto/current_user.dto';
 
@@ -7,7 +8,11 @@ export class AuthUseCase {
   async login(username: string, password: string) {
     // api req
     console.log('try login', username, password);
-    const user = CurrentUserDto.fromJSON({});
+
+    const user = CurrentUserDto.fromJSON({
+      first_name: 'Some',
+      last_name: 'Username',
+    });
 
     store.commit(new SetCurrentUser(user));
   }

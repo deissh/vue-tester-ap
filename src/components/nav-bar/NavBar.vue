@@ -17,18 +17,12 @@
 import { defineComponent } from 'vue';
 
 import UserBadge from '@/components/user/UserBadge.vue';
-import { CurrentUserDto } from '@/core/dto/current_user.dto';
+import { UserDto } from '@/core/dto/user.dto';
 
 export default defineComponent({
   components: { UserBadge },
-  data() {
-    return {
-      // TODO: replace value from store
-      currentUser: CurrentUserDto.fromJSON({
-        first_name: 'John',
-        last_name: 'Doe',
-      }),
-    };
+  props: {
+    currentUser: { type: UserDto, required: true },
   },
 });
 </script>
