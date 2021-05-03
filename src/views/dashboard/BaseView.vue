@@ -1,8 +1,22 @@
 <template>
   <div class="container">
-    <NavBar class="nav_bar" :current-user="currentUser" />
+    <NavBar class="nav_bar">
+      <template v-slot:top>
+        <UserBadge :user="currentUser"/>
+
+        <NavBarItem class="spacer" />
+        <NavBarItem>Дисциплины</NavBarItem>
+        <NavBarItem>Пользователи</NavBarItem>
+      </template>
+
+      <template v-slot:bottom>
+        test text 2
+      </template>
+    </NavBar>
 
     <div class="content">
+      <SubjectListItem />
+
       <router-view />
     </div>
   </div>
@@ -12,11 +26,17 @@
 import { defineComponent } from 'vue';
 
 import NavBar from '@/components/nav-bar/NavBar.vue';
+import NavBarItem from '@/components/nav-bar/NavBarItem.vue';
+import UserBadge from '@/components/user/UserBadge.vue';
+import SubjectListItem from '@/components/subject/SubjectListItem.vue';
+
 import { AuthRepositories } from '@/core/repositories/auth.repositories';
 import { UserDto } from '@/core/dto/user.dto';
 
 export default defineComponent({
-  components: { NavBar },
+  components: {
+    NavBar, NavBarItem, UserBadge, SubjectListItem,
+  },
   data: () => ({
     authRepositories: new AuthRepositories(),
   }),

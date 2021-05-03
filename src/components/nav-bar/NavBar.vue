@@ -2,29 +2,20 @@
   <div class="nav_bar">
     <div class="content">
       <div class="top">
-        <UserBadge :user="currentUser"/>
+        <slot name="top"></slot>
       </div>
 
       <div class="bottom">
-        asd
+        <slot name="bottom"></slot>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-/* eslint-disable @typescript-eslint/camelcase */
 import { defineComponent } from 'vue';
 
-import UserBadge from '@/components/user/UserBadge.vue';
-import { UserDto } from '@/core/dto/user.dto';
-
-export default defineComponent({
-  components: { UserBadge },
-  props: {
-    currentUser: { type: UserDto, required: true },
-  },
-});
+export default defineComponent({});
 </script>
 
 <style scoped lang="scss">
