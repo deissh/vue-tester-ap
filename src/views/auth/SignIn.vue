@@ -48,18 +48,14 @@ export default defineComponent({
 
   methods: {
     async login(e: Event) {
+      e.preventDefault();
+
       // some logic
       await this.authUseCase.login(this.cred.username, this.cred.pwd);
       this.onLoginSuccess();
-
-      e.preventDefault();
     },
 
     onLoginSuccess() {
-      console.log('login w/', this.cred);
-      localStorage.setItem(LAST_LOGIN_USERNAME, this.cred.username);
-      localStorage.setItem('debug_is_auth', 'true');
-
       this.$router.push('/dashboard');
     },
   },

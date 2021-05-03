@@ -1,15 +1,14 @@
+import store from '@/store';
 import { CurrentUserDto } from '@/core/dto/current_user.dto';
-import { useStore } from '@/store';
 
 import { SetCurrentUser } from '@/store/auth';
 
 export class AuthUseCase {
-  private store = useStore();
-
   async login(username: string, password: string) {
     // api req
+    console.log('try login', username, password);
     const user = CurrentUserDto.fromJSON({});
 
-    this.store.commit(new SetCurrentUser(user));
+    store.commit(new SetCurrentUser(user));
   }
 }

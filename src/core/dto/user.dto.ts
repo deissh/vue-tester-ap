@@ -21,7 +21,7 @@ export class UserDto {
 
   public date_joined!: string;
 
-  static fromJSON(data: any): UserDto {
+  static fromJSON(data: unknown): UserDto {
     return plainToClass(this, data);
   }
 }

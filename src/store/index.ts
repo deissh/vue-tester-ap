@@ -1,14 +1,14 @@
 import { createStore, useStore as useBaseStore } from 'vuex';
 
-import * as Auth from './auth';
+import * as authModule from './auth';
 
 export interface RootState {
-  auth: Auth.State;
+  auth: authModule.State;
 }
 
 export default createStore<RootState>({
   modules: {
-    Auth: Auth.store,
+    auth: authModule.store,
   },
 });
 
