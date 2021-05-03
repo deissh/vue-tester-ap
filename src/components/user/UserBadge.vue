@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { UserDto } from '@/core/dto/user';
+import { UserDto } from '@/core/dto/user.dto';
 import CircleAvatar from '@/components/user/CircleAvatar.vue';
 
 export default defineComponent({

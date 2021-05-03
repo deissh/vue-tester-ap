@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { UserDto } from '@/core/dto/user';
+import { UserDto } from '@/core/dto/user.dto';
 
 export default defineComponent({
   props: {

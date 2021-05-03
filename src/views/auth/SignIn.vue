@@ -22,7 +22,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { AuthUseCase } from '@/core/usecase/Auth';
+import { AuthUseCase } from '@/core/usecase/auth.usecase';
 
 import TFInput from '@/components/tf/TFInput.vue';
 import TFCard from '@/components/tf/TFCard.vue';

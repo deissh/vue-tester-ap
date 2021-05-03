@@ -1,4 +1,4 @@
-import { CurrentUserDto } from '@/core/dto/current_user';
+import { CurrentUserDto } from '@/core/dto/current_user.dto';
 import { useStore } from '@/store';
 
 import { SetCurrentUser } from '@/store/auth';

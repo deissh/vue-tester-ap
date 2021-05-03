@@ -1,5 +1,5 @@
 import { FluxStandardAction } from '@/store/types';
-import { CurrentUserDto } from '@/core/dto/current_user';
+import { CurrentUserDto } from '@/core/dto/current_user.dto';
 
 export const SET_CURRENT_USER = 'auth/SET_CURRENT_USER';
 

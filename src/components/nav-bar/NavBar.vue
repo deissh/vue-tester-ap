@@ -17,7 +17,7 @@
 import { defineComponent } from 'vue';
 
 import UserBadge from '@/components/user/UserBadge.vue';
-import { CurrentUserDto } from '@/core/dto/current_user';
+import { CurrentUserDto } from '@/core/dto/current_user.dto';
 
 export default defineComponent({
   components: { UserBadge },
