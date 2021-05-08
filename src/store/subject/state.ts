@@ -5,5 +5,10 @@ export interface State {
 }
 
 export const initState = (): State => ({
-  subjects: [],
+  subjects: [
+    new SubjectDto(),
+    new SubjectDto(),
+    new SubjectDto(),
+    new SubjectDto(),
+  ],
 });

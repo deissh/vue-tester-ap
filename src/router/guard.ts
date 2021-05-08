@@ -1,10 +1,8 @@
 import { NavigationGuard } from 'vue-router';
-import { AuthRepositories } from '@/core/repositories/auth.repositories';
+import { AuthRepository } from '@/core/repositories/auth.repository';
 
 export const staffGuard: NavigationGuard = (to, from, next) => {
-  const auth = new AuthRepositories();
-
-  if (!auth.currentUser.is_staff) {
+  if (!AuthRepository.currentUser.is_staff) {
     // todo: alert
     return;
   }
@@ -13,9 +11,7 @@ export const staffGuard: NavigationGuard = (to, from, next) => {
 };
 
 export const authorizedGuard: NavigationGuard = (to, from, next) => {
-  const auth = new AuthRepositories();
-
-  if (!auth.isLogined) {
+  if (!AuthRepository.isLogined) {
     next({ path: '/auth/sign_in' });
     return;
   }

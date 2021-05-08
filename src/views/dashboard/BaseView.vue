@@ -26,22 +26,17 @@ import { defineComponent } from 'vue';
 import NavBar from '@/components/nav-bar/NavBar.vue';
 import NavBarItem from '@/components/nav-bar/NavBarItem.vue';
 import UserBadge from '@/components/user/UserBadge.vue';
-import SubjectListItem from '@/components/subject/SubjectListItem.vue';
 
-import { AuthRepositories } from '@/core/repositories/auth.repositories';
+import { AuthRepository } from '@/core/repositories/auth.repository';
 import { UserDto } from '@/core/dto/user.dto';
 
 export default defineComponent({
   components: {
     NavBar, NavBarItem, UserBadge,
   },
-  data: () => ({
-    authRepositories: new AuthRepositories(),
-  }),
-
   computed: {
     currentUser(): UserDto {
-      return this.authRepositories.currentUser;
+      return AuthRepository.currentUser;
     },
   },
 });

@@ -3,8 +3,7 @@
           :class="staticClass"
           :style="style"
           :disabled="sending || disabled"
-          :title="title"
-          v-on="on">
+          :title="title">
     <span v-show="sending"
       class="spinner-border spinner-border-sm"
       role="status"
@@ -23,7 +22,6 @@ export default defineComponent({
   props: {
     staticClass: { required: false, type: String },
     style: { required: false, type: String },
-    on: { required: false, type: Function },
     disabled: { required: false, type: Boolean, default: false },
     sending: { required: false, type: Boolean, default: false },
     title: { required: false, type: String },

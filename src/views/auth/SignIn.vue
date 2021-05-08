@@ -24,7 +24,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { AuthUseCase } from '@/core/usecase/auth.usecase';
+import { authUseCase } from '@/core/usecase/auth.usecase';
 
 import TFInput from '@/components/app-input/AppInput.vue';
 import TFButton from '@/components/app-button/AppButton.vue';
@@ -39,23 +39,19 @@ export default defineComponent({
     TFInput,
   },
 
-  data() {
-    return {
-      cred: {
-        username: localStorage.getItem(LAST_LOGIN_USERNAME) || '',
-        pwd: '',
-      },
-
-      authUseCase: new AuthUseCase(),
-    };
-  },
+  data: () => ({
+    cred: {
+      username: localStorage.getItem(LAST_LOGIN_USERNAME) || '',
+      pwd: '',
+    },
+  }),
 
   methods: {
     async login(e: Event) {
       e.preventDefault();
 
       // some logic
-      await this.authUseCase.login(this.cred.username, this.cred.pwd);
+      await authUseCase.login(this.cred.username, this.cred.pwd);
       this.onLoginSuccess();
     },
 

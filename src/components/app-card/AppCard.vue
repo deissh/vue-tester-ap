@@ -2,7 +2,7 @@
   <div class="app_card">
     <div :class="{
         content: true,
-        content__horizontal: horizontal
+        'content--horizontal': horizontal
     }" >
       <slot />
     </div>
@@ -30,7 +30,7 @@ export default defineComponent({
     align-items: center;
     align-content: space-between;
 
-    &__horizontal {
+    &--horizontal {
       flex-direction: row;
     }
   }

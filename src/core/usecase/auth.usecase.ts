@@ -4,7 +4,7 @@ import { CurrentUserDto } from '@/core/dto/current_user.dto';
 
 import { SetCurrentUser } from '@/store/auth';
 
-export class AuthUseCase {
+class UseCase {
   async login(username: string, password: string) {
     // api req
     console.log('try login', username, password);
@@ -17,3 +17,5 @@ export class AuthUseCase {
     store.commit(new SetCurrentUser(user));
   }
 }
+
+export const authUseCase = new UseCase();

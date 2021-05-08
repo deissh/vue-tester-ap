@@ -1,7 +1,7 @@
 import store from '@/store';
 import { UserDto } from '@/core/dto/user.dto';
 
-export class AuthRepositories {
+class Repository {
   public get currentUser(): UserDto {
     const user = store.state.auth.currentUser;
     if (user === null) throw new Error('Invalid user');
@@ -17,3 +17,5 @@ export class AuthRepositories {
     return this.currentUser.is_staff;
   }
 }
+
+export const AuthRepository = new Repository();
