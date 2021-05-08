@@ -1,5 +1,18 @@
 <template>
   <div class="overview">
+    <h3>Активные контрольные работы</h3>
+    <div class="active_examinations_list">
+      <SubjectListItem
+        class="subjects_list__item"
+        v-for="item in subjects"
+        v-bind:key="item"
+      />
+      <SubjectListItem
+        class="subjects_list__item"
+        v-for="item in subjects"
+        v-bind:key="item"
+      />
+    </div>
 
     <h3>Дисциплины</h3>
 
@@ -37,7 +50,13 @@ export default defineComponent({
 <style lang="scss" scoped>
 @import "../../styles/init";
 
+.active_examinations_list {
+}
+
 .subjects_list {
+  display: flex;
+  flex-direction: column;
+
   &__item {
     margin-bottom: 20px;
 

@@ -45,20 +45,23 @@ export default defineComponent({
 <style lang="scss" scoped>
 @import "../../styles/init";
 
+$nav_bar_mobile_height: 80px;
+
 .container {
   background-color: tf-map-get($tf-state-colors, light, base);
 
   min-height: 100vh;
 
   .nav_bar {
-    position: absolute;
+    position: fixed;
+    top: 0;
 
     width: 250px;
     height: 100vh;
 
     @include tf-mobile {
       width: 100vw;
-      height: auto;
+      height: $nav_bar_mobile_height;
     }
   }
 }
@@ -78,8 +81,12 @@ export default defineComponent({
   @include tf-mobile {
     max-width: 100%;
 
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-top: $nav_bar_mobile_height;
+
+    & > * {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
   }
 }
 </style>
