@@ -2,7 +2,13 @@ import { NavigationGuard } from 'vue-router';
 import { AuthRepositories } from '@/core/repositories/auth.repositories';
 
 export const staffGuard: NavigationGuard = (to, from, next) => {
-  console.debug(to.name);
+  const auth = new AuthRepositories();
+
+  if (!auth.currentUser.is_staff) {
+    // todo: alert
+    return;
+  }
+
   next();
 };
 

@@ -1,15 +1,15 @@
 <template>
-  <img
-    :src="avatarUrl"
-    class="avatar"
-    alt="user avatar">
+  <AppTumb :url="avatarUrl" />
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import { UserDto } from '@/core/dto/user.dto';
 
+import AppTumb from '@/components/app-tumb/AppTumb.vue';
+
 export default defineComponent({
+  components: { AppTumb },
   props: {
     user: { required: true, type: Object as PropType<UserDto> },
   },

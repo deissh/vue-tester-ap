@@ -1,4 +1,4 @@
-import { createStore, useStore as useBaseStore } from 'vuex';
+import { createStore} from 'vuex';
 
 import * as authModule from './auth';
 
@@ -11,5 +11,3 @@ export default createStore<RootState>({
     auth: authModule.store,
   },
 });
-
-export const useStore = () => useBaseStore<RootState>();

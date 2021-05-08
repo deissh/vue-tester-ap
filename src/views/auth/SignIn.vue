@@ -1,22 +1,24 @@
 <template>
   <form v-on:submit="login">
-    <TFCard class="card_content">
-      <div class="logo">
-        <img src="../../assets/rgatu-new-logo.png" />
+    <AppCard class="card">
+      <div class="card_content">
+        <div class="logo">
+          <img src="../../assets/rgatu-new-logo.png" />
+        </div>
+
+        <TFInput
+          placeholder="Username"
+          v-model="cred.username" />
+        <TFInput
+          placeholder="Password"
+          type="password"
+          v-model="cred.pwd" />
+
+        <!-- TODO: remember me checkbox-->
+
+        <TFButton>Войти</TFButton>
       </div>
-
-      <TFInput
-        placeholder="Username"
-        v-model="cred.username" />
-      <TFInput
-        placeholder="Password"
-        type="password"
-        v-model="cred.pwd" />
-
-<!-- TODO: remember me checkbox-->
-
-      <TFButton>Войти</TFButton>
-    </TFCard>
+    </AppCard>
   </form>
 </template>
 
@@ -24,15 +26,17 @@
 import { defineComponent } from 'vue';
 import { AuthUseCase } from '@/core/usecase/auth.usecase';
 
-import TFInput from '@/components/tf/TFInput.vue';
-import TFCard from '@/components/tf/TFCard.vue';
-import TFButton from '@/components/tf/TFButton.vue';
+import TFInput from '@/components/app-input/AppInput.vue';
+import TFButton from '@/components/app-button/AppButton.vue';
+import AppCard from '@/components/app-card/AppCard.vue';
 
 const LAST_LOGIN_USERNAME = 'LAST_LOGIN_USERNAME';
 
 export default defineComponent({
   components: {
-    TFCard, TFButton, TFInput,
+    AppCard,
+    TFButton,
+    TFInput,
   },
 
   data() {
@@ -64,6 +68,14 @@ export default defineComponent({
 
 <style scoped lang="scss">
 @import "../../styles/init";
+
+.card {
+  padding: 30px;
+
+  background: tf-map-get($tf-state-colors, content-bg, base);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
 
 .card_content {
   display: flex;

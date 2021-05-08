@@ -15,8 +15,6 @@
     </NavBar>
 
     <div class="content">
-      <SubjectListItem />
-
       <router-view />
     </div>
   </div>
@@ -35,7 +33,7 @@ import { UserDto } from '@/core/dto/user.dto';
 
 export default defineComponent({
   components: {
-    NavBar, NavBarItem, UserBadge, SubjectListItem,
+    NavBar, NavBarItem, UserBadge,
   },
   data: () => ({
     authRepositories: new AuthRepositories(),

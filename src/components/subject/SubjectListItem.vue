@@ -1,54 +1,68 @@
 <template>
-  <div class="subject_list_item">
-    <div class="content">
-      <div class="start">
+  <AppCard horizontal class="subject_list_item">
+    <div class="start">
 
-        <img src="https://avatars.redforester.com/?name=ts" width="40" height="40">
+      <AppTumb
+        class="tumb"
+        url="https://avatars.redforester.com/?name=опf" />
 
-        <div class="title">
-          <span>First line</span>
-          <span class="desc">second</span>
-        </div>
-
+      <div class="title">
+        <span>Основы программирования</span>
+        <span class="desc">1 семестр</span>
       </div>
 
-      <div class="end"></div>
     </div>
-  </div>
+
+    <div class="end"></div>
+  </AppCard>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 
-export default defineComponent({});
+import AppTumb from '@/components/app-tumb/AppTumb.vue';
+import AppCard from '@/components/app-card/AppCard.vue';
+
+export default defineComponent({
+  components: { AppTumb, AppCard },
+});
 </script>
 
 <style lang="scss" scoped>
 .subject_list_item {
-  padding: 15px;
-  border-radius: 10px;
+  &:hover {
+    cursor: pointer;
 
-  background-color: white;
-  filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.1));
+    transition: filter 0.1s ease-in-out;
+    filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.1));
+  }
 
-  .content {
+  .tumb {
+    border-radius: 10px;
+    margin-right: 15px;
+  }
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    color: #2D2D2D;
+    font-size: 16px;
+
+    .desc {
+      color: #808080;
+      font-size: 14px;
+    }
+  }
+
+  .start {
+    flex: 1 1 auto;
+  }
+  .start, .end {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    align-content: space-between;
-
-    .title {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .start, .end {
-      flex: 1 1 auto;
-
-      display: flex;
-      flex-direction: row;
-    }
   }
 }
 </style>

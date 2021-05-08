@@ -6,7 +6,10 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     component: () => import('../views/dashboard/BaseView.vue'),
     beforeEnter: [authorizedGuard],
-    children: [],
+    children: [{
+      path: '',
+      component: () => import('../views/dashboard/Overview.vue'),
+    }],
   },
   {
     path: '/auth',

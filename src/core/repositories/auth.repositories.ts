@@ -12,4 +12,8 @@ export class AuthRepositories {
   public get isLogined(): boolean {
     return !!store.state.auth.currentUser;
   }
+
+  public get isStaff(): boolean {
+    return this.currentUser.is_staff;
+  }
 }
