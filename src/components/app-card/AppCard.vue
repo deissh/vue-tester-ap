@@ -30,6 +30,9 @@ export default defineComponent({
     align-items: center;
     align-content: space-between;
 
+    height: inherit;
+    width: inherit;
+
     &--horizontal {
       flex-direction: row;
     }

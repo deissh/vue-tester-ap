@@ -30,13 +30,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .subject_list_item {
-  &:hover {
-    cursor: pointer;
-
-    transition: filter 0.1s ease-in-out;
-    filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.1));
-  }
-
   .tumb {
     border-radius: 10px;
     margin-right: 15px;
@@ -63,6 +56,8 @@ export default defineComponent({
   .start, .end {
     display: flex;
     flex-direction: row;
+
+    align-items: center;
   }
 }
 </style>
